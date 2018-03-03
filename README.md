@@ -1,12 +1,6 @@
 # dropbox-paper-enhanced
 A WebExtension (Firefox for the moment) to get back what I missed on Evernote and more...
 
-## Installation
-
-* clone the repo
-* go to about:debugging on firefox
-* load temporary addon and point on the manifest.json
-
 ## Description
 
 Injecting some HTML/CSS/JS to get back to missed functionnalities from evernote and more
@@ -20,6 +14,13 @@ Injecting some HTML/CSS/JS to get back to missed functionnalities from evernote 
 ## Screenshots
 ![image](https://user-images.githubusercontent.com/2981891/36935504-9060826e-1f33-11e8-9c0c-6daf24535274.png)
 ![image](https://user-images.githubusercontent.com/2981891/36935505-91b36a14-1f33-11e8-9713-fb514cbee1fe.png)
+
+
+## Installation
+
+* clone the repo
+* go to about:debugging on firefox
+* load temporary addon and point on the manifest.json
 
 
 ## Status

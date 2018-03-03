@@ -5,15 +5,15 @@ A WebExtension (Firefox for the moment) to get back what I missed on Evernote an
 
 Injecting some HTML/CSS/JS to get back to missed functionnalities from evernote and more
 
-* A sidebar with notes quick access
+* A sidebar with bookmarks (editables, stored on localstorage)
 * "Compact mode" (Css modifications to enlarge the writing zone, reducing the text font size and line height)
 * A functionnality to encrypt/decrypt some parts of the note
 * A functionnality to correct/give insights on text (grammar, sentiment analysis)
 * ... experimenting with other small things that could improve the productivity
 
 ## Screenshots
-![image](https://user-images.githubusercontent.com/2981891/36935504-9060826e-1f33-11e8-9c0c-6daf24535274.png)
-![image](https://user-images.githubusercontent.com/2981891/36935505-91b36a14-1f33-11e8-9713-fb514cbee1fe.png)
+![image](https://user-images.githubusercontent.com/2981891/36936632-db448712-1f42-11e8-9e8b-5d16078dcfbe.png)
+![image](https://user-images.githubusercontent.com/2981891/36936633-dbe989ba-1f42-11e8-9d7a-dad9c8611133.png)
 
 
 ## Installation

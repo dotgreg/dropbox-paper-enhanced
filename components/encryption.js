@@ -1,28 +1,43 @@
-
-  //
-  // ENCRYPTER
-  //
-
   App.initHTML.encryption = {}
 
   App.initHTML.encryption.htmlPopup = `
     <div id="de-popup-panel-encryption" class="de-popup-panel">
-      <input type="text" id="de-popup-input" placeholder="input"/>
-      <input type="password" id="de-popup-key" placeholder="key" />
-      <textarea id="de-popup-textarea-encrypted" readonly> </textarea>
-      <input type="button" id="de-popup-decrypt-button" value="decrypt" />
-      <input type="button" id="de-popup-encrypt-button" value="encrypt" />
+      <div class="de-container">
+        <input type="text" id="de-popup-input" placeholder="input"/>
+        <input type="password" id="de-popup-key" placeholder="key" />
+        <div class="de-clear"></div>
+      </div>
+      <div class="de-container">
+        <textarea id="de-popup-textarea-encrypted" readonly> </textarea>
+      </div>
+      <div class="de-container">
+        <input type="button" class="de-button" id="de-popup-decrypt-button" value="decrypt" />
+        <input type="button" class="de-button" id="de-popup-encrypt-button" value="encrypt" />
+      </div>
     </div>
   `
   App.initHTML.encryption.css = `
+    #de-popup-panel-encryption {
 
+    }
+
+    #de-popup-panel-encryption #de-popup-input {
+      float: left;
+      width: 70%;
+    }
+
+    #de-popup-panel-encryption #de-popup-key {
+      float: left;
+      width: 21%;
+    }
+
+    #de-popup-textarea-encrypted {
+      width: 98%;
+      height: 100px;
+    }
   `
 
   setTimeout(function() {
-    //
-    // ENCRYPTER
-    //
-  
     var encryptButton = document.getElementById('de-popup-encrypt-button')
     var decryptButton = document.getElementById('de-popup-decrypt-button')
     var popup = document.getElementById('de-popup')
@@ -44,20 +59,16 @@
 
     encryptButton.onclick = function() {
       var res = window.cipher.encode(key.value, text.value)
-      console.log('encrypt', '\"'+key.value+'\"', '\"'+text.value+'\"', res)
-      // encryptedInput.value = res
+      // console.log('encrypt', '\"'+key.value+'\"', '\"'+text.value+'\"', res)
       textarea.innerHTML = res
       textarea.innerText = res
     }
     decryptButton.onclick = function() {
       var res = window.cipher.decode(key.value, text.value)
-      console.log('decrypt', '\"'+key.value+'\"', '\"'+text.value+'\"', res)
-      // encryptedInput.value = res
+      // console.log('decrypt', '\"'+key.value+'\"', '\"'+text.value+'\"', res)
       textarea.innerHTML = res
       textarea.innerText = res
     }
-
-    console.log('ENCRYPTER loaded')
   }, 1000)
 
 

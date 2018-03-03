@@ -1,19 +1,20 @@
-
-  //
-  // GRAMMAR CORRECTER
-  //
-
   App.initHTML.grammar = {}
 
   App.initHTML.grammar.htmlPopup = `
     <div id="de-popup-panel-grammar" class="de-popup-panel">
-      <textarea id="de-popup-grammar-textarea"> </textarea>
-      <select name="de-popup-grammar-lang" id="de-popup-grammar-lang">
+      <div class="de-container">
+        <textarea id="de-popup-grammar-textarea"> </textarea>
+      </div>
+      <div class="de-container">
+        <div id="de-popup-grammar-result"></div>
+      </div>
+      <div class="de-container">
+        <input type="button" class="de-button" id="de-popup-grammar-correct" value="correct" />
+        <select name="de-popup-grammar-lang" id="de-popup-grammar-lang">
           <option value="fr">FR</option>
-          <option value="en-EN">En</option>
-      </select>
-      <input type="button" id="de-popup-grammar-correct" value="correct" />
-      <div id="de-popup-grammar-result"></div>
+          <option value="en-US">en-US</option>
+        </select>
+      </div>
     </div>
   `
   App.initHTML.grammar.css = `
@@ -23,12 +24,19 @@
       .de-grammar-icon {
 
       }
+
+      #de-popup-grammar-textarea {
+        width: 280px;
+        height: 100px;
+      }
+
       .de-grammar-message {
         display: none;
         position: absolute;
-        width: 200px;
-        height: 200px;
-        background: rgba(255,255,255,0.8);
+        min-width: 100px;
+        background: rgba(255,255,255,1);
+        padding: 10px;
+        box-shadow: ${App.style.shadow};
       }
       .de-grammar-error:hover .de-grammar-message {
         display: block;
@@ -36,6 +44,7 @@
   `
 
   setTimeout(function() {
+
     App.grammar = {
       html: {
         textarea: document.getElementById("de-popup-grammar-textarea"),
@@ -53,7 +62,7 @@
     App.grammar.outputCorrected = function(sentence, obj) {
       var addedLength = 0
       _.each(obj.matches, function(m) {
-        console.log(m)
+        // console.log(m)
         var replacement = (m.replacements && m.replacements[0]) ? m.replacements[0].value : ''
         var finalMessage = " <span class='de-grammar-error'> <span class='de-grammar-icon'>*E*</span> <span class='de-grammar-message'>"+m.message+" - "+replacement+" </span></span> "
         sentence = sentence.splice(addedLength + m.offset, 0, finalMessage)
@@ -63,6 +72,11 @@
     }
 
     App.grammar.html.submit.onclick = function () {
+
+      console.log('tocorrect')
+      App.grammar.toCorrect = {text: App.grammar.html.textarea.value, language: App.grammar.html.lang.value};
+      console.log(App.grammar.toCorrect)
+
       $j.ajax({
         type: "POST",
         url: App.grammar.config.endpoint,
@@ -81,4 +95,4 @@
 
 
 
-  console.log('component/grammar loaded')
+  console.log('component/grammar2 loaded')

@@ -19,6 +19,7 @@
       "matches": ["*://*.paper.dropbox.com/*"],
       "js": [
         "bootstrap.js",
+        "style.js",
         "libs/libs.js",
         "libs/sha.js",
         "components/popup.js",

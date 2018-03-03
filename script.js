@@ -1,11 +1,3 @@
-// document.body.style.border = "10px solid orange";
-
-
-
-//
-// MAIN INJECTION
-//
-
 function main () {
   var body = document.body
 
@@ -19,10 +11,29 @@ function main () {
       ${App.initHTML.popup.htmlBottom}
 
     <style>
+      .de-container {
+        margin-bottom: 5px;
+      }
+      .de-clear {
+        clear:both;
+      }
+      .de-button {
+        padding: 7px 10px!important;
+        background: #007af5!important;
+        border-radius: 3px!important;
+        color: white!important;
+        cursor: pointer!important;
+        text-align: center!important;
+      }
+      .de-button:hover {
+        background: #238ffc!important;
+      }
+
       ${App.initHTML.sidemenu.css}
       ${App.initHTML.popup.css}
       ${App.initHTML.uiModifications.css}
       ${App.initHTML.grammar.css}
+      ${App.initHTML.encryption.css}
     </style>
   `
 

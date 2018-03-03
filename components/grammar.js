@@ -26,7 +26,7 @@
       }
 
       #de-popup-grammar-textarea {
-        width: 280px;
+        width: 98%;
         height: 100px;
       }
 
@@ -73,9 +73,8 @@
 
     App.grammar.html.submit.onclick = function () {
 
-      console.log('tocorrect')
       App.grammar.toCorrect = {text: App.grammar.html.textarea.value, language: App.grammar.html.lang.value};
-      console.log(App.grammar.toCorrect)
+      App.grammar.html.submit.value = 'correcting...'
 
       $j.ajax({
         type: "POST",
@@ -83,6 +82,7 @@
         data: App.grammar.toCorrect,
         success: function(e){
           App.grammar.html.result.innerHTML = App.grammar.outputCorrected(App.grammar.toCorrect.text, e)
+          App.grammar.html.submit.value = 'correct'
         },
         error: function(e){console.log('error',e)}
       });

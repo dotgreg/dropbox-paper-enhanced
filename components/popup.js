@@ -27,7 +27,7 @@
       font-size: 10px;
       position: fixed;
       display:none;
-      top: 150px;
+      top: 100px;
       width: 300px;
       right: 100px;
       background: white;
@@ -82,11 +82,9 @@
       popup.style.display = 'none'
     }
     App.popup.open = function (panel) {
-      top = '200px';
       var popup = App.popup.html.popup
       popup.style.display = 'block'
-      popup.style.top = top + 'px'
-      popup.style.left = window.innerWidth - 400 + 'px'
+      popup.style.left = window.innerWidth - 500 + 'px'
 
       _.map(App.popup.html.panels, function(p) {
         p.style.display = 'none'

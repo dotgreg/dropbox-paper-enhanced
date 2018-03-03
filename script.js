@@ -3,9 +3,16 @@ function main () {
 
   var htmldata = ''
   htmldata = `
-      ${App.initHTML.sidemenu.html}
+      ${App.initHTML.sidemenu.htmlTop}
+        ${App.initHTML.bookmarks.html}
+        <ul>
+          <li> <p id="toggleEncryption" class="de-button"> Encrypt </p> </li>
+          <li> <p id="grammarChecker" class="de-button"> SpellCheck </p> </li>
+        </ul>
+      ${App.initHTML.sidemenu.htmlBottom}
 
       ${App.initHTML.popup.htmlTop}
+        ${App.initHTML.bookmarks.htmlPopup}
         ${App.initHTML.grammar.htmlPopup}
         ${App.initHTML.encryption.htmlPopup}
       ${App.initHTML.popup.htmlBottom}
@@ -30,6 +37,7 @@ function main () {
       }
 
       ${App.initHTML.sidemenu.css}
+      ${App.initHTML.bookmarks.css}
       ${App.initHTML.popup.css}
       ${App.initHTML.uiModifications.css}
       ${App.initHTML.grammar.css}

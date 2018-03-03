@@ -94,6 +94,14 @@
       document.getElementById("de-popup-panel-"+panel).style.display = 'block'
     }
 
+    document.ondblclick = function (e) {
+      App.popup.close()
+    };
+
+    App.popup.html.popup.ondblclick = function (event) {
+      event.stopPropagation();
+    }
+
     App.popup.html.close.onclick = App.popup.close
   }, 1000)
 

@@ -53,7 +53,6 @@
     }
 
     toggleEncryption.onclick = function () {
-      console.log('dd')
       App.popup.open('encryption')
     }
 

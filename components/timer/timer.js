@@ -203,9 +203,7 @@ function timer() {
   //
 
   App.timer.playSounds = function (sec) {
-    // console.log(sec)
-    // console.log(sec % 60)
-    if(sec % 20 === 0) {App.timer.playSound("tictac4")}
+    if(sec % 60 === 0) {App.timer.playSound("tictac4")}
     if(sec == 1570){App.timer.playSound("1h45")}
     if(sec == 6299){App.timer.playSound("1h45")}
     if(sec == 5399){App.timer.playSound("1h30")}
@@ -226,9 +224,7 @@ function timer() {
 
   App.timer.playSound = function (sound) {
     var path = browser.extension.getURL("components/timer/assets/"+sound+".wav");
-    // console.log(sound, path)
     var snd = new Audio(path);
-    // console.log(snd)
     snd.play();
   }
 

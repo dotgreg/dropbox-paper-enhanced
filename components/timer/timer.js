@@ -9,7 +9,7 @@ App.initHTML.timer.htmlPopup = `
       <input type="button" class="de-button" id="de-popup-timer-stop-button" value="stop" />
       <div id="de-popup-timer-sound-wrapper">
         <input type="checkbox" class="de-checkbox" id="de-popup-timer-sound" value="sound" checked />
-        <span> sound </span>
+        <div> sound </div>
       </div>
     </div>
     <div class="de-container">
@@ -42,8 +42,8 @@ App.initHTML.timer.css = `
 
   #de-popup-timer-sound-wrapper {
     position: absolute;
-    top: 40px;
-    right: 20px;
+    top: 25px;
+    right: 30px;
   }
   #de-popup-timer-sound-wrapper input {
     position: relative;

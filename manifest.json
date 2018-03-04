@@ -27,6 +27,7 @@
         "components/grammar.js",
         "components/ui-modifications.js",
         "components/bookmarks.js",
+        "components/timer/timer.js",
         "components/sidemenu.js",
         "script.js"
       ]

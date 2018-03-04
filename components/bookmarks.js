@@ -79,7 +79,7 @@
 
     App.bookmarks.processText = function (text) {
       var list = text.split("\n")
-      console.log(list)
+      
       var array = []
       _.each(list, function(i){
         var j = i.split("|")

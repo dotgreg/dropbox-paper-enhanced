@@ -131,6 +131,9 @@ function timer() {
         var total = 1000 * 60 * App.timer.config.length
         var percentage = Math.round(((total - App.timer.state.current) / total) * 100)
         App.timer.html.statusbg.style.width = `${percentage}%`
+
+        App.timer.playSounds(App.timer.state.current / 1000)
+
       } else {
         App.timer.finish()
       }
@@ -194,6 +197,41 @@ function timer() {
     App.timer.html.statusWrapper.style.display = 'block'
     // App.timer.start()
   }
+
+  //
+  // Sounds
+  //
+
+  App.timer.playSounds = function (sec) {
+    // console.log(sec)
+    // console.log(sec % 60)
+    if(sec % 20 === 0) {App.timer.playSound("tictac4")}
+    if(sec == 1570){App.timer.playSound("1h45")}
+    if(sec == 6299){App.timer.playSound("1h45")}
+    if(sec == 5399){App.timer.playSound("1h30")}
+    if(sec == 4499){App.timer.playSound("1h15")}
+    if(sec == 3599){App.timer.playSound("1h")}
+    if(sec == 2999){App.timer.playSound("50min")}
+    if(sec == 2699){App.timer.playSound("45min")}
+    if(sec == 2399){App.timer.playSound("40min")}
+    if(sec == 1799){App.timer.playSound("30min")}
+    if(sec == 1199){App.timer.playSound("20min")}
+    if(sec == 899){App.timer.playSound("15min")}
+    if(sec == 599){App.timer.playSound("10min")}
+    if(sec == 299){App.timer.playSound("5min")}
+    if(sec == 119){App.timer.playSound("2min")}
+    if(sec == 59){App.timer.playSound("1min")}
+    if(sec == 5){App.timer.playSound("velo")}
+  }
+
+  App.timer.playSound = function (sound) {
+    var path = browser.extension.getURL("components/timer/assets/"+sound+".wav");
+    // console.log(sound, path)
+    var snd = new Audio(path);
+    // console.log(snd)
+    snd.play();
+  }
+
 
   //
   // list saving + text analyzer

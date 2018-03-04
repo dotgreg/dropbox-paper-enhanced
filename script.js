@@ -34,6 +34,10 @@ function main () {
         cursor: pointer!important;
         text-align: center!important;
       }
+      .de-checkbox {
+        opacity: 1!important;
+        width: auto!important;
+      }
       .de-button:hover {
         background: #238ffc!important;
       }

@@ -7,6 +7,10 @@ App.initHTML.timer.htmlPopup = `
       </select>
       <input type="button" class="de-button" id="de-popup-timer-toggle-button" value="start" />
       <input type="button" class="de-button" id="de-popup-timer-stop-button" value="stop" />
+      <div id="de-popup-timer-sound-wrapper">
+        <input type="checkbox" class="de-checkbox" id="de-popup-timer-sound" value="sound" checked />
+        <span> sound </span>
+      </div>
     </div>
     <div class="de-container">
       <textarea id="de-timer-editor-textarea"></textarea>
@@ -31,6 +35,23 @@ App.initHTML.timer.css = `
   #de-timer-edit-button {
 
   }
+
+  #id-popup-timer-sound {
+
+  }
+
+  #de-popup-timer-sound-wrapper {
+    position: absolute;
+    top: 40px;
+    right: 20px;
+  }
+  #de-popup-timer-sound-wrapper input {
+    position: relative;
+    top: 2px;
+  }
+  #de-popup-timer-sound-wrapper span {
+  }
+
   #de-timer-editor-textarea {
     width: 98%;
     height: 200px;
@@ -71,6 +92,8 @@ function timer() {
       statusbg: document.getElementById("de-timer-status-bg"),
       statusWrapper: document.getElementById("de-timer-status-wrapper"),
       tasks: document.getElementById("de-popup-timer-tasks"),
+
+      sound: document.getElementById("de-popup-timer-sound"),
     },
     state: {
       current: null,
@@ -226,9 +249,13 @@ function timer() {
   }
 
   App.timer.playSound = function (sound) {
-    var path = browser.extension.getURL("components/timer/assets/"+sound+".wav");
-    var snd = new Audio(path);
-    snd.play();
+    if (App.timer.html.sound.checked) {
+      var path = browser.extension.getURL("components/timer/assets/"+sound+".wav");
+      var snd = new Audio(path);
+      snd.play();
+    } else {
+      console.log('no sound config')
+    }
   }
 
 

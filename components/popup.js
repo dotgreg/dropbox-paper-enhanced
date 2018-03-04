@@ -38,7 +38,7 @@
     }
 
     #de-popup textarea,
-    #de-popup input {
+    #de-popup input:not([type="checkbox"]) {
       padding: 7px 10px!important;
       margin: 0px 0px 2px 2px!important;
       border: grey;

@@ -59,7 +59,6 @@ function main () {
     }
 }
 
-
 try {
   console.log('======== SCRIPT DROPBOX ENHANCED STARTED==========')
   main()

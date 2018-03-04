@@ -147,6 +147,8 @@ function timer() {
 
         App.timer.html.status.innerHTML = App.timer.renderStatus(App.timer.state.current)
 
+        document.title = App.timer.renderStatus(App.timer.state.current);
+
         App.timer.html.tasks.disabled = true
         App.timer.html.textarea.readOnly  = true
         App.timer.html.statusWrapper.style.display = 'block'
@@ -200,8 +202,9 @@ function timer() {
   }
 
   App.timer.renderStatus = function (time) {
-    var timeInMin = time / (1000 * 60)
-    return `${Math.round(timeInMin * 100) / 100} min`
+    var mins = Math.round(time / (1000 * 60))
+    var secs = (time % (1000 * 60)) / 1000
+    return `${mins}m${secs}`
   }
 
   App.timer.resurectTimer = function () {

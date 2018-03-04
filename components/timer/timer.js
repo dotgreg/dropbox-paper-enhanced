@@ -140,6 +140,7 @@ function timer() {
     App.timer.state.task = task
     localStorage.setItem("de-timer-task", App.timer.state.task);
 
+    var i = 0
     App.timer.state.interval = setInterval(function(){
       if (App.timer.state.current > 0) {
         App.timer.state.current -= 1000
@@ -147,7 +148,9 @@ function timer() {
 
         App.timer.html.status.innerHTML = App.timer.renderStatus(App.timer.state.current)
 
-        document.title = App.timer.renderStatus(App.timer.state.current);
+        var signs = '◷◶◵◴'
+        document.title = signs[i] + " " + App.timer.renderStatus(App.timer.state.current);
+        i = (i > 2) ? 0 : i + 1
 
         App.timer.html.tasks.disabled = true
         App.timer.html.textarea.readOnly  = true

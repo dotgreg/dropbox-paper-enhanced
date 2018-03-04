@@ -230,7 +230,6 @@ function timer() {
 
   App.timer.playSounds = function (sec) {
     if(sec % 60 === 0) {App.timer.playSound("tictac4")}
-    if(sec == 1570){App.timer.playSound("1h45")}
     if(sec == 6299){App.timer.playSound("1h45")}
     if(sec == 5399){App.timer.playSound("1h30")}
     if(sec == 4499){App.timer.playSound("1h15")}

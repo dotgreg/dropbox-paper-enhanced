@@ -190,11 +190,14 @@ function timer() {
       task: localStorage.getItem("de-timer-task")
     }
 
-    App.timer.html.status.innerHTML = App.timer.renderStatus(App.timer.state.current)
+    // App.timer.html.status.innerHTML = App.timer.renderStatus(App.timer.state.current)
+    //
+    // App.timer.html.tasks.disabled = true
+    // App.timer.html.textarea.readOnly  = true
+    // App.timer.html.statusWrapper.style.display = 'block'
+    App.timer.start()
+    setTimeout(function(){App.timer.pause()}, 1000)
 
-    App.timer.html.tasks.disabled = true
-    App.timer.html.textarea.readOnly  = true
-    App.timer.html.statusWrapper.style.display = 'block'
     // App.timer.start()
   }
 

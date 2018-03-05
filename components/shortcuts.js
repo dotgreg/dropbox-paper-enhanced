@@ -32,6 +32,9 @@ App.initHTML.shortcuts.htmlPopup = `
       <input type="text"  id="de-shortcuts-small-popup-input" placeholder="Type a shortcut" />
     </div>
     <div class="de-container">
+      <div id="de-shortcuts-list"></div>
+    </div>
+    <div class="de-container">
       <textarea id="de-shortcuts-editor-textarea"></textarea>
     </div>
     <input type-"button" class="de-button" id="de-shortcuts-editor-save" value="save"/>
@@ -45,18 +48,12 @@ setTimeout(function() {
       popInput: document.getElementById('de-shortcuts-small-popup-input'),
       popWrapper: document.getElementById('de-shortcuts-small-popup'),
 
+      list: document.getElementById("de-shortcuts-list"),
       textarea: document.getElementById("de-shortcuts-editor-textarea"),
       submit: document.getElementById("de-shortcuts-editor-save"),
 
       toggleButton: document.getElementById("de-shortcuts-toggle-button"),
-    },
-    keys: [],
-    patterns: [
-      ['hello', 'lorem ipsum facto blablablacaca'],
-      ['hello2', 'lorem ipsum facto blablablacaca'],
-      ['hey', '"hello how are you?"'],
-      ['time', 'Date.now()'],
-    ]
+    }
   }
 
   var getKeyNum = function (e) {
@@ -79,13 +76,7 @@ setTimeout(function() {
 
   App.shortcuts.checkActivePattern = function (e) {
     if (e.ctrlKey && e.altKey && getChar(e) == 'e') {
-
-        App.popup.open('shortcuts')
-        App.shortcuts.html.textarea.value = App.shortcuts.getList()
-
-        App.shortcuts.html.popInput.value = ''
-        App.shortcuts.html.popInput.disabled = false
-        App.shortcuts.html.popInput.focus()
+      App.shortcuts.openPopup()
     }
   }
 
@@ -119,16 +110,39 @@ setTimeout(function() {
   }
 
   //
+  // popup system
+  //
+
+  App.shortcuts.openPopup = function () {
+    App.popup.open('shortcuts')
+    App.shortcuts.html.textarea.value = App.shortcuts.getList()
+    App.shortcuts.html.list.innerHTML = `available: ${App.shortcuts.createListString()}`
+
+    App.shortcuts.html.popInput.value = ''
+    App.shortcuts.html.popInput.disabled = false
+    App.shortcuts.html.popInput.focus()
+  }
+
+  //
   // Saving pattern system
   //
 
   App.shortcuts.html.submit.onclick = function () {
     App.shortcuts.setList(App.shortcuts.html.textarea.value)
+    App.shortcuts.openPopup()
+  }
+
+  App.shortcuts.createListString = function () {
+    var list = ''
+    _.each(App.shortcuts.processText(App.shortcuts.getList()), function(p) {
+      list += `${p[0]}, `
+    })
+    console.log(list)
+    return list
   }
 
   App.shortcuts.html.toggleButton.onclick = function () {
-    App.popup.open('shortcuts')
-    App.shortcuts.html.textarea.value = App.shortcuts.getList()
+    App.shortcuts.openPopup()
   }
 
   App.shortcuts.processText = function (text) {

@@ -38,6 +38,8 @@
   `
 
   setTimeout(function() {
+    App.encryption = {}
+
     var encryptButton = document.getElementById('de-popup-encrypt-button')
     var decryptButton = document.getElementById('de-popup-decrypt-button')
     var popup = document.getElementById('de-popup')
@@ -57,17 +59,49 @@
     }
 
     encryptButton.onclick = function() {
-      var res = window.cipher.encode(key.value, text.value)
-      // console.log('encrypt', '\"'+key.value+'\"', '\"'+text.value+'\"', res)
+      var res = App.encryption.encrypt(key.value, text.value)
       textarea.innerHTML = res
       textarea.innerText = res
     }
     decryptButton.onclick = function() {
-      var res = window.cipher.decode(key.value, text.value)
-      // console.log('decrypt', '\"'+key.value+'\"', '\"'+text.value+'\"', res)
+      var res = App.encryption.decrypt(key.value, text.value)
       textarea.innerHTML = res
       textarea.innerText = res
     }
+
+    App.encryption.getKey = function(password) {
+      password = password.repeat(31)
+
+      var key = []
+      _.each(password, function(char) {
+        key.push(parseInt(char.charCodeAt(0)))
+      })
+
+      key = key.slice(0, 32)
+
+      return key
+    }
+
+    App.encryption.encrypt = function(password, text) {
+      var key = App.encryption.getKey(password)
+      var textBytes = aesjs.utils.utf8.toBytes(text);
+      var aesCtr = new aesjs.ModeOfOperation.ctr(key, new aesjs.Counter(5));
+      var encryptedBytes = aesCtr.encrypt(textBytes);
+      var encryptedHex = aesjs.utils.hex.fromBytes(encryptedBytes);
+      return encryptedHex
+    }
+
+    App.encryption.decrypt = function(password, text) {
+      var key = App.encryption.getKey(password)
+      var encryptedBytes = aesjs.utils.hex.toBytes(text);
+      var aesCtr = new aesjs.ModeOfOperation.ctr(key, new aesjs.Counter(5));
+      var decryptedBytes = aesCtr.decrypt(encryptedBytes);
+      var decryptedText = aesjs.utils.utf8.fromBytes(decryptedBytes);
+      return decryptedText
+    }
+
+
+
   }, 1000)
 
 

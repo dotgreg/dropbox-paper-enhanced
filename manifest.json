@@ -22,7 +22,7 @@
         "bootstrap.js",
         "style.js",
         "libs/libs.js",
-        "libs/sha.js",
+        "libs/aes.js",
         "components/popup.js",
         "components/encryption.js",
         "components/grammar.js",

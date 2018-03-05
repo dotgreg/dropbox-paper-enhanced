@@ -77,15 +77,8 @@ setTimeout(function() {
   // KEY LOG and COPY SYSTEM
   //
 
-  App.shortcuts.keylog = function(e) {
-    var char = getChar(e)
-    if (App.shortcuts.keys.length > 10) App.shortcuts.keys = App.shortcuts.keys.substr(1);
-    App.shortcuts.keys += char
-  }
-
   App.shortcuts.checkActivePattern = function (e) {
     if (e.ctrlKey && e.altKey && getChar(e) == 'e') {
-        App.shortcuts.keys = ''
 
         App.popup.open('shortcuts')
         App.shortcuts.html.textarea.value = App.shortcuts.getList()
@@ -96,9 +89,9 @@ setTimeout(function() {
     }
   }
 
-  App.shortcuts.checkShortcutPatterns = function () {
+  App.shortcuts.checkShortcutPatterns = function (text) {
     _.each(App.shortcuts.processText(App.shortcuts.getList()), function(p) {
-      if (App.shortcuts.keys.includes(p[0])){
+      if (text === p[0]){
         var res = eval(p[1])
         App.shortcuts.html.popInput.value = res
         App.shortcuts.html.popInput.select()
@@ -116,14 +109,12 @@ setTimeout(function() {
     })
   }
 
-  App.shortcuts.html.popInput.onkeypress = function(e) {
+  App.shortcuts.html.popInput.onkeyup = function(e) {
     e.stopPropagation();
-    App.shortcuts.keylog(e)
-    App.shortcuts.checkShortcutPatterns()
+    App.shortcuts.checkShortcutPatterns(App.shortcuts.html.popInput.value)
   }
 
   document.onkeypress = function(e) {
-    App.shortcuts.keylog(e)
     App.shortcuts.checkActivePattern(e)
   }
 

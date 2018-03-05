@@ -30,6 +30,7 @@
         "components/bookmarks.js",
         "components/timer/timer.js",
         "components/sidemenu.js",
+        "components/shortcuts.js",
         "script.js"
       ]
     }

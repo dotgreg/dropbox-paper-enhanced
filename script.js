@@ -9,14 +9,18 @@ function main () {
           <li> <p id="toggleEncryption" class="de-button"> Encrypt </p> </li>
           <li> <p id="grammarChecker" class="de-button"> SpellCheck </p> </li>
           <li> ${App.initHTML.timer.html} </li>
+          <li> <p id="de-shortcuts-toggle-button" class="de-button"> Shortcuts </p> </li>
         </ul>
       ${App.initHTML.sidemenu.htmlBottom}
+
+      ${App.initHTML.shortcuts.html}
 
       ${App.initHTML.popup.htmlTop}
         ${App.initHTML.bookmarks.htmlPopup}
         ${App.initHTML.grammar.htmlPopup}
         ${App.initHTML.encryption.htmlPopup}
         ${App.initHTML.timer.htmlPopup}
+        ${App.initHTML.shortcuts.htmlPopup}
       ${App.initHTML.popup.htmlBottom}
 
     <style>
@@ -49,6 +53,7 @@ function main () {
       ${App.initHTML.uiModifications.css}
       ${App.initHTML.grammar.css}
       ${App.initHTML.encryption.css}
+      ${App.initHTML.shortcuts.css}
     </style>
   `
 

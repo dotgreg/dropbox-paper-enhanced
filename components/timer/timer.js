@@ -194,6 +194,8 @@ function timer() {
     App.timer.html.statusWrapper.style.display = 'none'
     App.timer.html.toggleTimer.value = 'start'
 
+    document.title = ''
+
     App.timer.html.tasks.disabled = false
     App.timer.html.textarea.readOnly = false
 

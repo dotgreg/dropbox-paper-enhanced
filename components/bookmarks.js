@@ -79,7 +79,7 @@
 
     App.bookmarks.processText = function (text) {
       var list = text.split("\n")
-      
+
       var array = []
       _.each(list, function(i){
         var j = i.split("|")
@@ -90,7 +90,7 @@
     }
 
     App.bookmarks.getList = function () {
-      return localStorage.getItem("de-bookmarks");
+      return localStorage.getItem("de-bookmarks") || "";
     }
     App.bookmarks.setList = function (text) {
       return localStorage.setItem("de-bookmarks", text);

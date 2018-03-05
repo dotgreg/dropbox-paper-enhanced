@@ -257,7 +257,7 @@ function timer() {
 
   App.timer.playSound = function (sound) {
     if (App.timer.html.sound.checked) {
-      var path = browser.extension.getURL("components/timer/assets/"+sound+".wav");
+      var path = chrome.extension.getURL("components/timer/assets/"+sound+".wav");
       var snd = new Audio(path);
       snd.play();
     } else {

@@ -1,14 +1,14 @@
 {
 
   "manifest_version": 2,
-  "name": "Borderify",
+  "name": "Dropbox Paper Plus",
   "version": "1.0",
 
-  "description": "Adds a red border to all webpages matching mozilla.org.",
+  "description": "Dropbox Paper on steroids",
 
   "icons": {
-    "48": "icons/icon-48.png",
-    "96": "icons/icon-96.png"
+    "48": "icons/logo.png",
+    "96": "icons/logo.png"
   },
   "permissions": [
     "https://*/" ,

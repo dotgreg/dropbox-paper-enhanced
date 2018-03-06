@@ -98,6 +98,7 @@ function timer() {
     state: {
       current: null,
       interval: null,
+      state: null,
       task: null
     },
     config: {
@@ -131,6 +132,7 @@ function timer() {
   //
   // }
   //
+
   App.timer.start = function (task) {
     if (App.timer.state.interval) return false;
 
@@ -139,6 +141,9 @@ function timer() {
 
     App.timer.state.task = task
     localStorage.setItem("de-timer-task", App.timer.state.task);
+
+    App.timer.state.state = 'started'
+    localStorage.setItem("de-timer-state", App.timer.state.state);
 
     var i = 0
     App.timer.state.interval = setInterval(function(){
@@ -172,6 +177,9 @@ function timer() {
     if (App.timer.state.interval) clearInterval(App.timer.state.interval)
     App.timer.state.interval = null
     App.timer.html.toggleTimer.value = 'start'
+
+    App.timer.state.state = 'paused'
+    localStorage.setItem("de-timer-state", App.timer.state.state);
   }
 
   App.timer.stop = function () {
@@ -188,6 +196,7 @@ function timer() {
 
     localStorage.removeItem("de-timer-current");
     localStorage.removeItem("de-timer-task");
+    localStorage.removeItem("de-timer-state");
 
     App.timer.html.status.innerHTML = ''
     App.timer.html.statusbg.style.width = '0%'
@@ -202,6 +211,7 @@ function timer() {
     App.timer.state = {
       current: null,
       interval: null,
+      state: null,
       task: null
     }
   }
@@ -213,23 +223,23 @@ function timer() {
   }
 
   App.timer.resurectTimer = function () {
+    console.log('resurectTimer')
     if (!localStorage.getItem("de-timer-current") || !localStorage.getItem("de-timer-task")) return false
+    console.log(localStorage.getItem("de-timer-current"), localStorage.getItem("de-timer-task"))
 
     App.timer.state = {
       current: localStorage.getItem("de-timer-current"),
       interval: null,
+      state: localStorage.getItem("de-timer-state"),
       task: localStorage.getItem("de-timer-task")
     }
 
-    // App.timer.html.status.innerHTML = App.timer.renderStatus(App.timer.state.current)
-    //
-    // App.timer.html.tasks.disabled = true
-    // App.timer.html.textarea.readOnly  = true
-    // App.timer.html.statusWrapper.style.display = 'block'
-    App.timer.start()
-    setTimeout(function(){App.timer.pause()}, 1000)
-
-    // App.timer.start()
+    console.log(App.timer.state.state)
+    if (App.timer.state.state === 'started') App.timer.start()
+    else {
+      App.timer.start()
+      setTimeout(function(){App.timer.pause()}, 1000)
+    }
   }
 
   //

@@ -102,7 +102,7 @@ function timer() {
       task: null
     },
     config: {
-      length: 30
+      length: 0.1
     }
   }
 
@@ -223,9 +223,7 @@ function timer() {
   }
 
   App.timer.resurectTimer = function () {
-    console.log('resurectTimer')
     if (!localStorage.getItem("de-timer-current") || !localStorage.getItem("de-timer-task")) return false
-    console.log(localStorage.getItem("de-timer-current"), localStorage.getItem("de-timer-task"))
 
     App.timer.state = {
       current: localStorage.getItem("de-timer-current"),
@@ -234,10 +232,9 @@ function timer() {
       task: localStorage.getItem("de-timer-task")
     }
 
-    console.log(App.timer.state.state)
-    if (App.timer.state.state === 'started') App.timer.start()
+    if (App.timer.state.state === 'started') App.timer.start(App.timer.state.task)
     else {
-      App.timer.start()
+      App.timer.start(App.timer.state.task)
       setTimeout(function(){App.timer.pause()}, 1000)
     }
   }
@@ -308,7 +305,6 @@ function timer() {
     App.timer.html.textarea.value = res
     App.timer.setList(res)
     App.timer.updateTasksListHtml()
-    // console.log(res)
   }
 
   App.timer.processText = function (text) {

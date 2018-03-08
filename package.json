@@ -1,0 +1,12 @@
+{
+  "name": "dropbox-paper-enhanced",
+  "description": "dropbox-paper-enhanced",
+  "version": "1.0.0",
+  "author": "Gregoire THIEBAULT <gregoire@31ten.network>",
+  "license": "MIT",
+  "main": "n/a",
+  "scripts": {
+    "develop": "web-ext run --source-dir .",
+    "build": "web-ext build --source-dir . --artifacts-dir ../ -o",
+  }
+}

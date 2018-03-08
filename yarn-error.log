@@ -1,0 +1,41 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\grego\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js build-firefox
+
+PATH: 
+  C:\Program Files\ImageMagick-7.0.7-Q16;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\nodejs\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Skype\Phone\;C:\Program Files\ffmpeg\bin;C:\Program Files\youtube-dl;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\cygwin64\bin;C:\ProgramData\chocolatey\bin;C:\Program Files\ONLYOFFICE\DesktopEditors\converter;C:\Users\grego\AppData\Local\Yarn\bin;C:\Users\grego\AppData\Local\Programs\Python\Python36\Scripts\;C:\Users\grego\AppData\Local\Programs\Python\Python36\;C:\Users\grego\AppData\Local\Microsoft\WindowsApps;C:\Users\grego\AppData\Roaming\npm;C:\Program Files\Docker Toolbox;C:\Users\grego\AppData\Local\atom\bin;C:\Users\grego\AppData\Local\.meteor\;C:\Program Files\Heroku\bin
+
+Yarn version: 
+  1.3.2
+
+Node version: 
+  6.10.3
+
+Platform: 
+  win32 x64
+
+npm manifest: 
+  {
+    "name": "dropbox-paper-enhanced",
+    "description": "dropbox-paper-enhanced",
+    "version": "1.0.0",
+    "author": "Gregoire THIEBAULT <gregoire@31ten.network>",
+    "license": "MIT",
+    "main": "n/a",
+    "scripts": {
+      "build-firefox": "web-ext run --source-dir .",
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  SyntaxError: C:\Users\grego\Desktop\Dev\webextensions\dropboxPaperEnhancer\package.json: Unexpected token } in JSON at position 267
+      at Object.parse (native)
+      at C:\Users\grego\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:770:59
+      at next (native)
+      at step (C:\Users\grego\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:92:30)
+      at C:\Users\grego\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:103:13
